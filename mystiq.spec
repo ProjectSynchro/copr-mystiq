@@ -1,13 +1,13 @@
 %define oname MystiQ
 
-Summary:	Audio/Video converter
-Name:		mystiq
-Version:	20.03.23
-Release:	2%{?dist}
-License:	GPLv3
-Group:		Video
-Url:		https://mystiqapp.com/
-Source0:	https://github.com/swl-x/MystiQ/archive/v%{version}.tar.gz
+Name:       mystiq
+Version:    20.03.23
+Release:    3%{?dist}
+Summary:    Audio/Video converter
+License:    GPLv3
+Group:      Video
+Url:        https://mystiqapp.com/
+Source0:    https://github.com/swl-x/MystiQ/archive/v%{version}.tar.gz
 %if 0%{?is_opensuse}
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Gui)
@@ -31,12 +31,12 @@ BuildRequires:  desktop-file-utils
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(x11)
 %endif
-%if 0%{?centos}
-
-
+%if 0%{?fedora} >= 36
+Requires:   ffmpeg-free
+%else
+Requires:   ffmpeg
 %endif
-Requires:	ffmpeg
-Requires:	sox
+Requires:   sox
 
 %description
 MystiQ is a GUI for FFmpeg, a powerful media converter. 
@@ -80,8 +80,8 @@ make USE_LIBNOTIFY=1 -j$(nproc) VERBOSE=1
 %make_install INSTALL_ROOT=%{buildroot}
 %endif
 
-%files
 %if 0%{?is_opensuse}
+%files
 %defattr(-,root,root,-)
 %doc LICENSE README.md CONTRIBUTING.md
 %{_bindir}/mystiq
@@ -95,6 +95,7 @@ make USE_LIBNOTIFY=1 -j$(nproc) VERBOSE=1
 %endif
 
 %if 0%{?centos} || 0%{?fedora}
+%files
 %doc LICENSE README.md CONTRIBUTING.md
 %{_bindir}/mystiq
 %{_datadir}/applications/mystiq.desktop
@@ -106,8 +107,12 @@ make USE_LIBNOTIFY=1 -j$(nproc) VERBOSE=1
 %{_mandir}/man1/mystiq.1.gz
 %endif
 
-
 %changelog
+* Mon May 16 2022 Jack Greiner <jack@emoss.org> - 20.03.23-3
+- Reformatted spec file slightly
+- Added ffmpeg-free for Fedora >=36
+- Fixed warnings in rpmlint
+
 * Sat Mar 21 2020 Maikel Llamaret Heredia <llamaret@webmisolutions.com> - 20.03.23
 - Added stereoscopic filters for 3D video options
 - Improved application update notification system
