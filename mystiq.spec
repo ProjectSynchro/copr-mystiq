@@ -31,11 +31,8 @@ BuildRequires:  desktop-file-utils
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(x11)
 %endif
-%if 0%{?fedora} >= 36
-Requires:   ffmpeg-free
-%else
+
 Requires:   ffmpeg
-%endif
 Requires:   sox
 
 %description
