@@ -63,7 +63,7 @@ qmake-qt5 mystiq.pro
 make USE_LIBNOTIFY=1 -j$(nproc) VERBOSE=1
 %endif
 
-%if 0%{?centos} || 0%{?fedora}
+%if 0%{?centos} || 0%{?fedora} || 0%{?rhel}
 qmake-qt5 mystiq.pro
 make USE_LIBNOTIFY=1 -j$(nproc) VERBOSE=1
 %endif
@@ -73,7 +73,7 @@ make USE_LIBNOTIFY=1 -j$(nproc) VERBOSE=1
 %qmake5_install
 %endif
 
-%if 0%{?centos} || 0%{?fedora}
+%if 0%{?centos} || 0%{?fedora} || 0%{?rhel}
 %make_install INSTALL_ROOT=%{buildroot}
 %endif
 
@@ -91,7 +91,7 @@ make USE_LIBNOTIFY=1 -j$(nproc) VERBOSE=1
 %{_mandir}/man1/mystiq.1.gz
 %endif
 
-%if 0%{?centos} || 0%{?fedora}
+%if 0%{?centos} || 0%{?fedora} || 0%{?rhel}
 %files
 %doc LICENSE README.md CONTRIBUTING.md
 %{_bindir}/mystiq
