@@ -3,7 +3,7 @@
 Summary:	Audio/Video converter
 Name:		mystiq
 Version:	20.03.23
-Release:	2
+Release:	2%{?dist}
 License:	GPLv3
 Group:		Video
 Url:		https://mystiqapp.com/
@@ -63,26 +63,25 @@ chmod -x mystiq.desktop icons/mystiq.svg
 %if 0%{?is_opensuse}
 %build
 qmake-qt5 mystiq.pro
-make USE_LIBNOTIFY=1 -j3 VERBOSE=1
+make USE_LIBNOTIFY=1 -j$(nproc) VERBOSE=1
 %endif
 
 %if 0%{?centos} || 0%{?fedora}
 qmake-qt5 mystiq.pro
-make USE_LIBNOTIFY=1 -j3 VERBOSE=1
+make USE_LIBNOTIFY=1 -j$(nproc) VERBOSE=1
 %endif
 
-%if 0%{?is_opensuse} 
 %install
+%if 0%{?is_opensuse} 
 %qmake5_install
 %endif
 
 %if 0%{?centos} || 0%{?fedora}
-%install
 %make_install INSTALL_ROOT=%{buildroot}
 %endif
 
-%if 0%{?is_opensuse}
 %files
+%if 0%{?is_opensuse}
 %defattr(-,root,root,-)
 %doc LICENSE README.md CONTRIBUTING.md
 %{_bindir}/mystiq
@@ -96,7 +95,6 @@ make USE_LIBNOTIFY=1 -j3 VERBOSE=1
 %endif
 
 %if 0%{?centos} || 0%{?fedora}
-%files
 %doc LICENSE README.md CONTRIBUTING.md
 %{_bindir}/mystiq
 %{_datadir}/applications/mystiq.desktop
