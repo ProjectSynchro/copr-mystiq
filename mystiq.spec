@@ -22,7 +22,6 @@ BuildRequires:  pkgconfig(Qt5Multimedia)
 BuildRequires:  pkgconfig(Qt5OpenGL)
 %endif
 %if 0%{?centos} || 0%{?fedora}
-BuildRequires:  qt5-devel
 BuildRequires:  qt5-qtbase-devel
 BuildRequires:  qt5-qtdeclarative-devel
 BuildRequires:  qt5-qtquickcontrols
@@ -149,7 +148,7 @@ make USE_LIBNOTIFY=1 -j3 VERBOSE=1
 - Changed background for mystiq logo to dark and light themes
 - Removed FFplay support
 
-* Tue Jan 09 2020 Maikel Llamaret Heredia <llamaret@webmisolutions.com> - 20.01.09
+* Thu Jan 09 2020 Maikel Llamaret Heredia <llamaret@webmisolutions.com> - 20.01.09
 - Added Swedish language Pack
 - Added Italian language Pack
 - Updated packages of FFmpeg, FFprobe and FFplay (only for Microsoft Windows)
