@@ -1,3 +1,6 @@
+> ⚠️ **Notice:**  
+> This project has migrated to **[Codeberg](https://codeberg.org/Synchro/copr-mystiq)**.  
+
 ## Description
 MystiQ is a GUI for [FFmpeg](http://ffmpeg.org), a powerful media converter.
 FFmpeg can read audio and video files in various formats and convert them into
